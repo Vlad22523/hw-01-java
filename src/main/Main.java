@@ -1,8 +1,8 @@
 package main;
 
-import models.Product; // Імпортуємо клас Product
-import models.Cart; // Імпортуємо клас Cart
-import models.Category; // Імпортуємо клас Ca1tegory
+import models.Product;
+import models.Cart;
+import models.Category;
 import models.Order;
 import models.OrderHistory;
 
@@ -12,7 +12,6 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Оголошення категорій та товарів
         Category electronics = new Category(1, "Електроніка");
         Category smartphones = new Category(2, "Смартфони");
         Category accessories = new Category(3, "Аксесуари");
@@ -21,7 +20,6 @@ public class Main {
         Product product2 = new Product(2, "Смартфон", 12999.50, "Смартфон з великим екраном", smartphones);
         Product product3 = new Product(3, "Навушники", 2499.00, "Бездротові навушники з шумозаглушенням", accessories);
 
-        // Створення кошика та історії замовлень
         Cart cart = new Cart();
         OrderHistory orderHistory = new OrderHistory();
 
@@ -63,7 +61,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Введіть назву товару для пошуку:");
-                    scanner.nextLine(); // Очистка буфера
+                    scanner.nextLine();
                     String searchName = scanner.nextLine();
                     System.out.println("Результати пошуку за назвою:");
                     cart.searchProductsByName(searchName).forEach(System.out::println);
@@ -79,10 +77,10 @@ public class Main {
                         System.out.println("Кошик порожній. Додайте товари перед оформленням замовлення.");
                     } else {
                         Order order = new Order(cart);
-                        orderHistory.addOrder(order); // Зберігаємо замовлення в історії
+                        orderHistory.addOrder(order);
                         System.out.println("Замовлення оформлено:");
                         System.out.println(order);
-                        cart.clear(); // Очищення кошика
+                        cart.clear();
                     }
                     break;
                 case 8:
